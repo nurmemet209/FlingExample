@@ -11,6 +11,8 @@ import android.view.View;
 
 /**
  * Created by nurmemet on 8/25/2016.
+ * 嵌套滑动系统有三个部分组成，NestedScrollingParent 一般是CoordinatorLayout,target一般是NestedScrollingView,RecycleView,
+ * 还有一个是带Behavior的View（必须是CoordinatorLayout 的直接子节点View，本例子中的跟随滑动 TextView）
  */
 public class CustomBehavior extends CoordinatorLayout.Behavior<View> {
     private ScrollerCompat mScroller;
