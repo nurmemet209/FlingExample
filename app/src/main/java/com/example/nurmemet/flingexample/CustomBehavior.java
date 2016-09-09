@@ -12,34 +12,14 @@ import android.view.View;
  * Created by nurmemet on 8/25/2016.
  */
 public class CustomBehavior extends CoordinatorLayout.Behavior<View> {
-    private int scrollY = 0;
     private ScrollerCompat mScroller;
     private Runnable mFlingRunnable = null;
-    private ViewOffsetHelper mViewOffsetHelper;
-    private int mTempTopBottomOffset = 0;
 
     public CustomBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
         mScroller = ScrollerCompat.create(context);
     }
 
-    @Override
-    public boolean onLayoutChild(CoordinatorLayout parent, View child, int layoutDirection) {
-        parent.onLayoutChild(child, layoutDirection);
-
-        if (mViewOffsetHelper == null) {
-            mViewOffsetHelper = new ViewOffsetHelper(child);
-        }
-        mViewOffsetHelper.onViewLayout();
-
-        if (mTempTopBottomOffset != 0) {
-            mViewOffsetHelper.setTopAndBottomOffset(mTempTopBottomOffset);
-            mTempTopBottomOffset = 0;
-        }
-
-
-        return true;
-    }
 
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
@@ -50,7 +30,6 @@ public class CustomBehavior extends CoordinatorLayout.Behavior<View> {
 
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        scrollY += dyConsumed;
         child.offsetTopAndBottom(dyConsumed);
 
     }

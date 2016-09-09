@@ -44,7 +44,7 @@
         android:layout_height="100dp"
         android:background="#220099FF"
         app:layout_behavior=".CustomBehavior"
-        android:text="text2"
+        android:text="texst2"
         android:gravity="right"
         />
 </android.support.design.widget.CoordinatorLayout>
